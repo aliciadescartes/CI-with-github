@@ -7,14 +7,10 @@ pipeline {
                 sh 'docker build .'
             }
         }
-        stage('Testing') {
-            steps {
-                sh 'python3 -m unittest'
-            }
-        }
+
         stage('Deploying') {
             steps {
-                sh 'docker run -p 5000:5000 my_app'
+                sh 'python3 -m unittest'
             }
         }
     }
