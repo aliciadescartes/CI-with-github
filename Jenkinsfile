@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                sh 'docker build .'
+                sh 'docker build -t my_app .'
+                sh 'docker run -p 5000:5000 my_app'
+             
             }
         }
 
