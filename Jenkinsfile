@@ -2,16 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('build from github') {
+        stage('Building') {
             steps {
-                echo 'fetch code'
-                echo 'build code'
+                bat 'pip install -r requirements.txt'
             }
         }
-        stage('test from github') {
+        stage('Testing') {
             steps {
-                echo 'running test1'
-                echo 'running test2'
+                bat 'python -m unittest test_main.py'
+            }
+        }
+        stage('Deploying') {
+            steps {
+                bat 'docker run -p 5000:5000 my_app'
             }
         }
     }
