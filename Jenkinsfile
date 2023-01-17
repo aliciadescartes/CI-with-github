@@ -4,16 +4,20 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                sh 'docker build -t my_app .'
-                sh 'docker run -p 5000:5000 my_app'
+                sh 'docker build .'
              
             }
         }
 
-        stage('Deploying') {
+        stage('Testing') {
             steps {
                 sh 'python3 -m unittest'
             }
+        }
+        stage('Deploy') { 
+            steps {                
+                sh 'docker run -d -p 5000:5000 nom_image'            
+            }        
         }
     }
 }
