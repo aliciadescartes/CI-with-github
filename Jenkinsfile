@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -p -d nom_image'
+                sh 'docker run -d -p nom_image'
             }
         }
         
