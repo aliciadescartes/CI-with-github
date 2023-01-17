@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                bat 'pip install -r requirements.txt'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Testing') {
             steps {
-                bat 'python -m unittest test_main.py'
+                sh 'python -m unittest test_main.py'
             }
         }
         stage('Deploying') {
             steps {
-                bat 'docker run -p 5000:5000 my_app'
+                sh 'docker run -p 5000:5000 my_app'
             }
         }
     }
