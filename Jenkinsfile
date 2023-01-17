@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 5000:5000 nom_image'
+                sh 'docker run -d -p 8080:5000 nom_image'
             }
         }
         
